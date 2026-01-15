@@ -1,0 +1,78 @@
+{
+  "name": "ssh-put",
+  "displayName": "SSH Put - Upload Open Files",
+  "description": "Upload currently open files to remote server via SSH/SFTP. Desarrollado por Alejandro Flamerich",
+  "version": "1.0.0",
+  "author": "Alejandro Flamerich",
+  "publisher": "94d733d8-9adb-441f-86c1-8ce9b30aa344",
+  "icon": "images/ssh.png",
+  "engines": {
+    "vscode": "^1.75.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "ssh.put",
+        "title": "SSH: Upload Open Files"
+      },
+      {
+        "command": "ssh.configure",
+        "title": "SSH Put: Configure"
+      },
+      {
+        "command": "ssh.about",
+        "title": "SSH Put: About"
+      }
+    ],
+    "configuration": {
+      "title": "SSH Put",
+      "properties": {
+        "ssh.server": {
+          "type": "string",
+          "default": "",
+          "description": "SSH server hostname or IP address"
+        },
+        "ssh.path": {
+          "type": "string",
+          "default": "",
+          "description": "Remote base path where files will be uploaded (e.g., /var/www/app)"
+        },
+        "ssh.user": {
+          "type": "string",
+          "default": "",
+          "description": "SSH username"
+        },
+        "ssh.pass": {
+          "type": "string",
+          "default": "",
+          "description": "SSH password (stored in settings)"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile",
+    "lint": "eslint src --ext ts",
+    "package": "vsce package"
+  },
+  "devDependencies": {
+    "@types/node": "^18.x",
+    "@types/vscode": "^1.75.0",
+    "@types/ssh2": "^1.11.0",
+    "@typescript-eslint/eslint-plugin": "^6.4.0",
+    "@typescript-eslint/parser": "^6.4.0",
+    "eslint": "^8.47.0",
+    "typescript": "^5.1.6",
+    "@vscode/vsce": "^2.19.0"
+  },
+  "dependencies": {
+    "ssh2": "^1.15.0"
+  }
+}
