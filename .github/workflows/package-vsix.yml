@@ -31,9 +31,9 @@ jobs:
               run: |
                   npm run compile
 
-            - name: Package extension (.vsix)
-              run: |
-                  npx @vscode/vsce package
+                        - name: Package extension (.vsix)
+                            run: |
+                                    npx @vscode/vsce package --baseContentUrl "https://github.com/alejandroflamerich/SSH-Put/blob/main/" --baseImagesUrl "https://github.com/alejandroflamerich/SSH-Put/raw/main/"
 
             - name: Upload .vsix artifact
               uses: actions/upload-artifact@v4
