@@ -1,6 +1,48 @@
 name: Package VSIX
 
 on:
+  workflow_dispatch: {}
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  package:
+    name: Build and package .vsix
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: true
+
+      - name: Use Node 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Compile TypeScript
+        run: npm run compile
+        shell: bash
+
+      - name: Package extension (.vsix)
+        run: |
+          npx @vscode/vsce package --baseContentUrl "https://github.com/alejandroflamerich/SSH-Put/blob/main/" --baseImagesUrl "https://github.com/alejandroflamerich/SSH-Put/raw/main/"
+
+      - name: Upload .vsix artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ssh-put-vsix
+          path: |
+            *.vsix
+name: Package VSIX
+
+on:
     workflow_dispatch: {}
     push:
         tags:
