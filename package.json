@@ -4,10 +4,18 @@
   "description": "Upload currently open files to remote server via SSH/SFTP. Desarrollado por Alejandro Flamerich",
   "version": "1.0.0",
   "author": "Alejandro Flamerich",
-  "publisher": "94d733d8-9adb-441f-86c1-8ce9b30aa344",
+  "publisher": "SSHPut",
   "icon": "images/ssh.png",
   "engines": {
     "vscode": "^1.75.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/alejandroflamerich/SSH-Put.git"
+  },
+  "homepage": "https://github.com/alejandroflamerich/SSH-Put",
+  "bugs": {
+    "url": "https://github.com/alejandroflamerich/SSH-Put/issues"
   },
   "categories": [
     "Other"
