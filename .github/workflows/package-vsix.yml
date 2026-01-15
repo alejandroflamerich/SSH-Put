@@ -27,9 +27,9 @@ jobs:
               run: |
                   npm ci
 
-            - name: Compile TypeScript
-              run: |
-                  npm run compile
+                        - name: Compile TypeScript
+                            run: npm run compile
+                            shell: bash
 
                         - name: Package extension (.vsix)
                             run: |
